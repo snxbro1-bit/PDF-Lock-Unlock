@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Free PDF Lock & Unlock Online</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:radial-gradient(circle at top left,#173d78,#0b2146 48%,#06142b);
+min-height:100vh;
+padding:30px 15px;
+color:#172033;
+}
+
+.wrap{
+max-width:1050px;
+margin:auto;
+}
+
+.hero{
+text-align:center;
+color:#fff;
+margin-bottom:25px;
+}
+
+.hero h1{
+margin:0 0 10px;
+font-size:38px;
+}
+
+.hero p{
+margin:0;
+color:#d7e5ff;
+font-size:16px;
+}
+
+.card{
+background:#fff;
+border-radius:22px;
+padding:28px;
+box-shadow:0 20px 60px rgba(0,0,0,.28);
+}
+
+.tabs{
+display:flex;
+gap:8px;
+padding:6px;
+background:#eef3fa;
+border-radius:13px;
+margin-bottom:24px;
+}
+
+.tab{
+flex:1;
+border:0;
+padding:13px;
+border-radius:9px;
+font-size:15px;
+font-weight:bold;
+cursor:pointer;
+background:transparent;
+color:#64748b;
+}
+
+.tab.active{
+background:#16458f;
+color:#fff;
+}
+
+.panel{
+display:none;
+}
+
+.panel.active{
+display:block;
+}
+
+.upload{
+display:block;
+border:2px dashed #9bb5dc;
+border-radius:18px;
+background:#f6f9ff;
+padding:42px 20px;
+text-align:center;
+cursor:pointer;
+}
+
+.upload:hover,
+.upload.drag{
+background:#edf5ff;
+border-color:#235a9f;
+}
+
+.icon{
+font-size:48px;
+}
+
+.upload h2{
+margin:10px 0 7px;
+font-size:23px;
+}
+
+.upload p{
+margin:0 0 18px;
+color:#64748b;
+}
+
+.choose{
+display:inline-block;
+padding:13px 23px;
+border-radius:10px;
+background:#16458f;
+color:#fff;
+font-weight:bold;
+}
+
+input[type=file]{
+display:none;
+}
+
+.filebox{
+display:none;
+margin-top:20px;
+}
+
+.file{
+display:flex;
+align-items:center;
+gap:14px;
+padding:15px;
+background:#f8fafc;
+border:1px solid #e0e7ef;
+border-radius:13px;
+}
+
+.pdficon{
+font-size:30px;
+}
+
+.fileinfo{
+flex:1;
+min-width:0;
+}
+
+.filename{
+font-weight:bold;
+word-break:break-word;
+}
+
+.filesize{
+font-size:13px;
+color:#64748b;
+margin-top:4px;
+}
+
+.remove{
+border:0;
+background:#fee2e2;
+color:#b91c1c;
+padding:9px 13px;
+border-radius:8px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.form{
+margin-top:20px;
+display:none;
+}
+
+.field{
+margin-bottom:15px;
+}
+
+.field label{
+display:block;
+font-weight:bold;
+margin-bottom:7px;
+color:#334155;
+}
+
+.field input{
+width:100%;
+padding:13px;
+border:1px solid #cbd5e1;
+border-radius:9px;
+font-size:15px;
+outline:none;
+}
+
+.field input:focus{
+border-color:#16458f;
+}
+
+.hint{
+font-size:13px;
+color:#64748b;
+margin-top:7px;
+line-height:1.5;
+}
+
+.actions{
+display:none;
+gap:12px;
+margin-top:22px;
+}
+
+.main-btn{
+flex:1;
+border:0;
+border-radius:10px;
+padding:14px 20px;
+background:#16458f;
+color:#fff;
+font-size:15px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.main-btn:disabled{
+opacity:.55;
+cursor:not-allowed;
+}
+
+.clear{
+border:0;
+border-radius:10px;
+padding:14px 20px;
+background:#e9eef5;
+color:#26354d;
+font-weight:bold;
+cursor:pointer;
+}
+
+.progress{
+display:none;
+margin-top:22px;
+}
+
+.progress-info{
+display:flex;
+justify-content:space-between;
+font-size:14px;
+color:#526176;
+margin-bottom:7px;
+}
+
+.track{
+height:10px;
+background:#e5eaf2;
+border-radius:20px;
+overflow:hidden;
+}
+
+.bar{
+width:0;
+height:100%;
+background:#16458f;
+transition:.2s;
+}
+
+.result{
+display:none;
+margin-top:24px;
+padding:20px;
+background:#f0fdf4;
+border:1px solid #bbf7d0;
+border-radius:15px;
+}
+
+.result h3{
+margin:0 0 10px;
+color:#166534;
+}
+
+.result p{
+margin:5px 0;
+color:#475569;
+line-height:1.6;
+}
+
+.download{
+width:100%;
+margin-top:12px;
+border:0;
+border-radius:9px;
+padding:13px;
+background:#166534;
+color:#fff;
+font-weight:bold;
+cursor:pointer;
+}
+
+.info{
+margin-top:25px;
+padding:22px;
+background:#f6f9ff;
+border:1px solid #dbe7f7;
+border-radius:16px;
+}
+
+.info h2{
+margin:0 0 12px;
+font-size:22px;
+color:#173d78;
+}
+
+.info p{
+margin:0 0 12px;
+color:#64748b;
+line-height:1.7;
+}
+
+.info ol{
+margin:0;
+padding-left:22px;
+color:#334155;
+line-height:2;
+}
+
+.note{
+text-align:center;
+margin-top:20px;
+color:#d5e1f6;
+font-size:13px;
+}
+
+@media(max-width:700px){
+
+body{
+padding:18px 10px;
+}
+
+.card{
+padding:18px;
+}
+
+.hero h1{
+font-size:29px;
+}
+
+.actions{
+flex-direction:column;
+}
+
+.file{
+align-items:flex-start;
+}
+
+.tabs{
+gap:5px;
+}
+
+.tab{
+font-size:14px;
+padding:12px 8px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+<div class="hero">
+<h1>PDF Lock & Unlock</h1>
+<p>Protect or unlock PDF files securely in your browser.</p>
+</div>
+
+<div class="card">
+
+<div class="tabs">
+
+<button class="tab active" data-tab="lock">
+🔒 Lock PDF
+</button>
+
+<button class="tab" data-tab="unlock">
+🔓 Unlock PDF
+</button>
+
+</div>
+
+
+<!-- LOCK PANEL -->
+
+<div class="panel active" id="lockPanel">
+
+<label class="upload" id="lockDrop">
+
+<div class="icon">🔐</div>
+
+<h2>Upload PDF to Lock</h2>
+
+<p>
+Add a PDF and protect it with a password.
+</p>
+
+<span class="choose">
+Choose PDF File
+</span>
+
+<input
+type="file"
+id="lockFile"
+accept="application/pdf,.pdf">
+
+</label>
+
+<div class="filebox" id="lockFileBox">
+
+<div class="file">
+
+<div class="pdficon">📄</div>
+
+<div class="fileinfo">
+
+<div class="filename" id="lockName"></div>
+
+<div class="filesize" id="lockSize"></div>
+
+</div>
+
+<button class="remove" id="lockRemove">
+Remove
+</button>
+
+</div>
+
+</div>
+
+<div class="form" id="lockForm">
+
+<div class="field">
+
+<label>Password</label>
+
+<input
+type="password"
+id="lockPassword"
+placeholder="Enter password"
+autocomplete="new-password">
+
+</div>
+
+<div class="field">
+
+<label>Confirm Password</label>
+
+<input
+type="password"
+id="lockConfirm"
+placeholder="Confirm password"
+autocomplete="new-password">
+
+</div>
+
+<div class="hint">
+Use a strong password that you can remember. The PDF will be encrypted with AES-256.
+</div>
+
+</div>
+
+<div class="actions" id="lockActions">
+
+<button class="main-btn" id="lockBtn">
+🔒 Lock & Download PDF
+</button>
+
+<button class="clear" id="lockClear">
+Clear
+</button>
+
+</div>
+
+</div>
+
+
+<!-- UNLOCK PANEL -->
+
+<div class="panel" id="unlockPanel">
+
+<label class="upload" id="unlockDrop">
+
+<div class="icon">🔓</div>
+
+<h2>Upload Locked PDF</h2>
+
+<p>
+Add a password-protected PDF and enter its password.
+</p>
+
+<span class="choose">
+Choose Locked PDF
+</span>
+
+<input
+type="file"
+id="unlockFile"
+accept="application/pdf,.pdf">
+
+</label>
+
+<div class="filebox" id="unlockFileBox">
+
+<div class="file">
+
+<div class="pdficon">📄</div>
+
+<div class="fileinfo">
+
+<div class="filename" id="unlockName"></div>
+
+<div class="filesize" id="unlockSize"></div>
+
+</div>
+
+<button class="remove" id="unlockRemove">
+Remove
+</button>
+
+</div>
+
+</div>
+
+<div class="form" id="unlockForm">
+
+<div class="field">
+
+<label>PDF Password</label>
+
+<input
+type="password"
+id="unlockPassword"
+placeholder="Enter current PDF password"
+autocomplete="current-password">
+
+</div>
+
+<div class="hint">
+Enter the correct password used to protect this PDF.
+</div>
+
+</div>
+
+<div class="actions" id="unlockActions">
+
+<button class="main-btn" id="unlockBtn">
+🔓 Unlock & Download PDF
+</button>
+
+<button class="clear" id="unlockClear">
+Clear
+</button>
+
+</div>
+
+</div>
+
+
+<!-- PROGRESS -->
+
+<div class="progress" id="progress">
+
+<div class="progress-info">
+
+<span id="progressText">
+Preparing...
+</span>
+
+<span id="percent">
+0%
+</span>
+
+</div>
+
+<div class="track">
+
+<div class="bar" id="bar"></div>
+
+</div>
+
+</div>
+
+
+<!-- RESULT -->
+
+<div class="result" id="result">
+
+<h3 id="resultTitle">
+✅ PDF Ready
+</h3>
+
+<p id="resultText"></p>
+
+<button class="download" id="downloadBtn">
+⬇ Download PDF
+</button>
+
+</div>
+
+
+<!-- INFO -->
+
+<div class="info" id="infoLock">
+
+<h2>How to Lock a PDF</h2>
+
+<p>
+Protect your PDF with a password before sharing or storing it.
+</p>
+
+<ol>
+<li>Upload your PDF file.</li>
+<li>Enter a password and confirm it.</li>
+<li>Click <strong>Lock &amp; Download PDF</strong>.</li>
+<li>Download your password-protected PDF.</li>
+</ol>
+
+</div>
+
+<div class="info" id="infoUnlock" style="display:none">
+
+<h2>How to Unlock a PDF</h2>
+
+<p>
+Remove password protection from a PDF when you know the existing password.
+</p>
+
+<ol>
+<li>Upload your locked PDF.</li>
+<li>Enter the current PDF password.</li>
+<li>Click <strong>Unlock &amp; Download PDF</strong>.</li>
+<li>Download the unlocked PDF.</li>
+</ol>
+
+</div>
+
+</div>
+
+<div class="note">
+🔒 Your PDF files are processed directly in your browser. Files are not uploaded to a server.
+</div>
+
+</div>
+
+
+<script type="module">
+
+/*
+  PDF Lock & Unlock
+  Powered by pdfstudio / QPDF WebAssembly.
+
+  The library provides real PDF encryption/decryption
+  in the browser.
+*/
+
+import {
+  createPdfToolkit
+} from "https://cdn.jsdelivr.net/npm/pdfstudio@0.4.0/+esm";
+
+
+const tabs=
+document.querySelectorAll(".tab");
+
+const lockPanel=
+document.getElementById("lockPanel");
+
+const unlockPanel=
+document.getElementById("unlockPanel");
+
+const infoLock=
+document.getElementById("infoLock");
+
+const infoUnlock=
+document.getElementById("infoUnlock");
+
+const lockFile=
+document.getElementById("lockFile");
+
+const unlockFile=
+document.getElementById("unlockFile");
+
+const lockDrop=
+document.getElementById("lockDrop");
+
+const unlockDrop=
+document.getElementById("unlockDrop");
+
+const lockFileBox=
+document.getElementById("lockFileBox");
+
+const unlockFileBox=
+document.getElementById("unlockFileBox");
+
+const lockForm=
+document.getElementById("lockForm");
+
+const unlockForm=
+document.getElementById("unlockForm");
+
+const lockActions=
+document.getElementById("lockActions");
+
+const unlockActions=
+document.getElementById("unlockActions");
+
+const lockBtn=
+document.getElementById("lockBtn");
+
+const unlockBtn=
+document.getElementById("unlockBtn");
+
+const lockClear=
+document.getElementById("lockClear");
+
+const unlockClear=
+document.getElementById("unlockClear");
+
+const lockRemove=
+document.getElementById("lockRemove");
+
+const unlockRemove=
+document.getElementById("unlockRemove");
+
+const lockPassword=
+document.getElementById("lockPassword");
+
+const lockConfirm=
+document.getElementById("lockConfirm");
+
+const unlockPassword=
+document.getElementById("unlockPassword");
+
+const progress=
+document.getElementById("progress");
+
+const progressText=
+document.getElementById("progressText");
+
+const percent=
+document.getElementById("percent");
+
+const bar=
+document.getElementById("bar");
+
+const result=
+document.getElementById("result");
+
+const resultTitle=
+document.getElementById("resultTitle");
+
+const resultText=
+document.getElementById("resultText");
+
+const downloadBtn=
+document.getElementById("downloadBtn");
+
+
+let lockSelected=null;
+let unlockSelected=null;
+let outputBytes=null;
+let outputName="";
+
+
+function formatBytes(bytes){
+
+if(bytes===0)return "0 Bytes";
+
+const units=[
+"Bytes",
+"KB",
+"MB",
+"GB"
+];
+
+const i=Math.floor(
+Math.log(bytes)/Math.log(1024)
+);
+
+return parseFloat(
+(bytes/Math.pow(1024,i)).toFixed(2)
+)+" "+units[i];
+
+}
+
+
+function setupFile(
+input,
+drop,
+fileBox,
+form,
+actions,
+nameEl,
+sizeEl,
+type
+){
+
+function load(file){
+
+if(
+!file ||
+(
+file.type!=="application/pdf" &&
+!file.name.toLowerCase().endsWith(".pdf")
+)
+){
+
+alert("Please select a valid PDF file.");
+return;
+
+}
+
+if(type==="lock"){
+lockSelected=file;
+}else{
+unlockSelected=file;
+}
+
+nameEl.textContent=file.name;
+sizeEl.textContent=formatBytes(file.size);
+
+fileBox.style.display="block";
+form.style.display="block";
+actions.style.display="flex";
+
+result.style.display="none";
+
+}
+
+input.addEventListener(
+"change",
+e=>{
+
+load(e.target.files[0]);
+
+input.value="";
+
+}
+);
+
+drop.addEventListener(
+"dragover",
+e=>{
+
+e.preventDefault();
+drop.classList.add("drag");
+
+}
+);
+
+drop.addEventListener(
+"dragleave",
+()=>{
+
+drop.classList.remove("drag");
+
+}
+);
+
+drop.addEventListener(
+"drop",
+e=>{
+
+e.preventDefault();
+
+drop.classList.remove("drag");
+
+load(e.dataTransfer.files[0]);
+
+}
+);
+
+return load;
+
+}
+
+
+const loadLock=
+setupFile(
+lockFile,
+lockDrop,
+lockFileBox,
+lockForm,
+lockActions,
+document.getElementById("lockName"),
+document.getElementById("lockSize"),
+"lock"
+);
+
+
+const loadUnlock=
+setupFile(
+unlockFile,
+unlockDrop,
+unlockFileBox,
+unlockForm,
+unlockActions,
+document.getElementById("unlockName"),
+document.getElementById("unlockSize"),
+"unlock"
+);
+
+
+/* Tabs */
+
+tabs.forEach(tab=>{
+
+tab.addEventListener(
+"click",
+()=>{
+
+tabs.forEach(t=>
+t.classList.remove("active")
+);
+
+tab.classList.add("active");
+
+const selected=
+tab.dataset.tab;
+
+if(selected==="lock"){
+
+lockPanel.classList.add("active");
+unlockPanel.classList.remove("active");
+
+infoLock.style.display="block";
+infoUnlock.style.display="none";
+
+}else{
+
+unlockPanel.classList.add("active");
+lockPanel.classList.remove("active");
+
+infoLock.style.display="none";
+infoUnlock.style.display="block";
+
+}
+
+result.style.display="none";
+
+}
+);
+
+});
+
+
+function resetProgress(){
+
+progress.style.display="none";
+
+bar.style.width="0%";
+
+percent.textContent="0%";
+
+progressText.textContent=
+"Preparing...";
+
+}
+
+
+function clearLock(){
+
+lockSelected=null;
+
+lockFileBox.style.display="none";
+lockForm.style.display="none";
+lockActions.style.display="none";
+
+lockPassword.value="";
+lockConfirm.value="";
+
+resetProgress();
+
+result.style.display="none";
+
+}
+
+
+function clearUnlock(){
+
+unlockSelected=null;
+
+unlockFileBox.style.display="none";
+unlockForm.style.display="none";
+unlockActions.style.display="none";
+
+unlockPassword.value="";
+
+resetProgress();
+
+result.style.display="none";
+
+}
+
+
+lockRemove.addEventListener(
+"click",
+clearLock
+);
+
+unlockRemove.addEventListener(
+"click",
+clearUnlock
+);
+
+lockClear.addEventListener(
+"click",
+clearLock
+);
+
+unlockClear.addEventListener(
+"click",
+clearUnlock
+);
+
+
+/* Download */
+
+downloadBtn.addEventListener(
+"click",
+()=>{
+
+if(!outputBytes)return;
+
+const blob=
+new Blob(
+[outputBytes],
+{type:"application/pdf"}
+);
+
+const url=
+URL.createObjectURL(blob);
+
+const a=
+document.createElement("a");
+
+a.href=url;
+
+a.download=outputName;
+
+document.body.appendChild(a);
+
+a.click();
+
+a.remove();
+
+setTimeout(
+()=>URL.revokeObjectURL(url),
+1000
+);
+
+}
+);
+
+
+/* Create QPDF toolkit */
+
+let toolkitPromise=null;
+
+async function getToolkit(){
+
+if(!toolkitPromise){
+
+toolkitPromise=
+createPdfToolkit();
+
+}
+
+return await toolkitPromise;
+
+}
+
+
+/* LOCK */
+
+lockBtn.addEventListener(
+"click",
+async()=>{
+
+if(!lockSelected)return;
+
+const password=
+lockPassword.value;
+
+const confirm=
+lockConfirm.value;
+
+if(!password){
+
+alert("Please enter a password.");
+
+lockPassword.focus();
+
+return;
+
+}
+
+if(password.length<4){
+
+alert(
+"Please use a password with at least 4 characters."
+);
+
+lockPassword.focus();
+
+return;
+
+}
+
+if(password!==confirm){
+
+alert("Passwords do not match.");
+
+lockConfirm.focus();
+
+return;
+
+}
+
+lockBtn.disabled=true;
+lockClear.disabled=true;
+
+progress.style.display="block";
+
+progressText.textContent=
+"Loading PDF engine...";
+
+bar.style.width="20%";
+percent.textContent="20%";
+
+try{
+
+const pdf=
+await getToolkit();
+
+progressText.textContent=
+"Encrypting PDF with AES-256...";
+
+bar.style.width="55%";
+percent.textContent="55%";
+
+outputBytes=
+await pdf.lock(
+lockSelected,
+{
+userPassword:password,
+ownerPassword:password
+}
+);
+
+outputName=
+lockSelected.name
+.replace(/\.pdf$/i,"")
++"-locked.pdf";
+
+bar.style.width="100%";
+percent.textContent="100%";
+
+progressText.textContent=
+"Completed!";
+
+resultTitle.textContent=
+"🔒 PDF Locked Successfully";
+
+resultText.innerHTML=
+"Your PDF has been password protected with AES-256 encryption.<br>"+
+"File size: "+
+formatBytes(outputBytes.length);
+
+result.style.display="block";
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Unable to lock this PDF. Please try another PDF."
+);
+
+resetProgress();
+
+}
+
+lockBtn.disabled=false;
+lockClear.disabled=false;
+
+}
+);
+
+
+/* UNLOCK */
+
+unlockBtn.addEventListener(
+"click",
+async()=>{
+
+if(!unlockSelected)return;
+
+const password=
+unlockPassword.value;
+
+if(!password){
+
+alert("Please enter the PDF password.");
+
+unlockPassword.focus();
+
+return;
+
+}
+
+unlockBtn.disabled=true;
+unlockClear.disabled=true;
+
+progress.style.display="block";
+
+progressText.textContent=
+"Loading PDF engine...";
+
+bar.style.width="20%";
+percent.textContent="20%";
+
+try{
+
+const pdf=
+await getToolkit();
+
+progressText.textContent=
+"Removing PDF password...";
+
+bar.style.width="55%";
+percent.textContent="55%";
+
+outputBytes=
+await pdf.unlock(
+unlockSelected,
+{
+password:password
+}
+);
+
+outputName=
+unlockSelected.name
+.replace(/\.pdf$/i,"")
++"-unlocked.pdf";
+
+bar.style.width="100%";
+percent.textContent="100%";
+
+progressText.textContent=
+"Completed!";
+
+resultTitle.textContent=
+"🔓 PDF Unlocked Successfully";
+
+resultText.innerHTML=
+"Password protection has been removed from your PDF.<br>"+
+"File size: "+
+formatBytes(outputBytes.length);
+
+result.style.display="block";
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Incorrect password or the PDF could not be unlocked."
+);
+
+resetProgress();
+
+}
+
+unlockBtn.disabled=false;
+unlockClear.disabled=false;
+
+}
+);
+
+</script>
+
+</body>
+</html>
